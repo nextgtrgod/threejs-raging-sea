@@ -8,9 +8,8 @@ let W = window.innerWidth
 let H = window.innerHeight
 let dpr = parseInt((new URL(document.location)).searchParams.get('dpr')) || window.devicePixelRatio
 
-const clock = new THREE.Clock(false)
-let elapsedTime = 0
 let rafId = 0
+let step = 0
 
 export default class Sketch {
 	constructor({ canvas }) {
@@ -99,21 +98,19 @@ export default class Sketch {
 	draw() {
 		rafId = window.requestAnimationFrame(this.draw.bind(this))
 
-		elapsedTime = clock.getElapsedTime()
-
-		this.sea.material.uniforms.uTime.value = elapsedTime
+		this.sea.material.uniforms.uTime.value = step
 	
 		this.controls.update()
 		this.renderer.render(this.scene, this.camera)
+
+		step += 0.016
 	}
 
 	start() {
-		clock.start()
 		this.draw()
 	}
 
 	stop() {
 		window.cancelAnimationFrame(rafId)
-		clock.stop()
 	}
 }
