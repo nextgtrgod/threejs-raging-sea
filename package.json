@@ -1,0 +1,16 @@
+{
+  "name": "threejs-raging-sea",
+  "version": "0.9.0",
+  "scripts": {
+    "start": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^2.6.4"
+  },
+  "dependencies": {
+    "lil-gui": "^0.13.0",
+    "three": "^0.134.0"
+  }
+}
