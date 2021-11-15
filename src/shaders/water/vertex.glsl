@@ -8,28 +8,24 @@ uniform float uSmallWavesFrequency;
 uniform float uSmallWavesSpeed;
 uniform float uSmallWavesIterations;
 
-varying vec2 vUv;
+// varying vec2 vUv;
 varying float vElevation;
 
 
 // Classic Perlin 3D Noise 
 // by Stefan Gustavson
 //
-vec4 permute(vec4 x)
-{
+vec4 permute(vec4 x) {
     return mod(((x*34.0)+1.0)*x, 289.0);
 }
-vec4 taylorInvSqrt(vec4 r)
-{
+vec4 taylorInvSqrt(vec4 r) {
     return 1.79284291400159 - 0.85373472095314 * r;
 }
-vec3 fade(vec3 t)
-{
+vec3 fade(vec3 t) {
     return t*t*t*(t*(t*6.0-15.0)+10.0);
 }
 
-float cnoise(vec3 P)
-{
+float cnoise(vec3 P) {
     vec3 Pi0 = floor(P); // Integer part for indexing
     vec3 Pi1 = Pi0 + vec3(1.0); // Integer part + 1
     Pi0 = mod(Pi0, 289.0);
@@ -124,6 +120,6 @@ void main() {
 
 	gl_Position = projectedPosition;
 
-	vUv = uv;
+	// vUv = uv;
 	vElevation = elevation;
 }
