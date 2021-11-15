@@ -95,19 +95,23 @@ export default class Sketch {
 		this.renderer.setPixelRatio(dpr)
 	}
 
-	draw() {
-		rafId = window.requestAnimationFrame(this.draw.bind(this))
+	animate() {
+		rafId = window.requestAnimationFrame(this.animate.bind(this))
 
-		this.sea.material.uniforms.uTime.value = step
-	
-		this.controls.update()
-		this.renderer.render(this.scene, this.camera)
+		this.draw()
 
 		step += 0.016
 	}
 
+	draw() {
+		this.sea.material.uniforms.uTime.value = step
+	
+		this.controls.update()
+		this.renderer.render(this.scene, this.camera)
+	}
+
 	start() {
-		this.draw()
+		this.animate()
 	}
 
 	stop() {
