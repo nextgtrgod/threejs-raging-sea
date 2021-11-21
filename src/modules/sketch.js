@@ -75,6 +75,7 @@ export default class Sketch {
 
 				uFogNear: { value: parameters.fog.near },
 				uFogFar: { value: parameters.fog.far },
+				uFogFarMultiplier: { value: Math.max(H / W, 1) },
 			},
 		})
 		if (import.meta.env.DEV) material.side = THREE.DoubleSide
@@ -87,6 +88,8 @@ export default class Sketch {
 	setSize() {
 		W = window.innerWidth
 		H = window.innerHeight
+
+		this.sea.material.uniforms.uFogFarMultiplier.value = Math.max(H / W, 1)
 
 		this.camera.aspect = W / H
 		this.camera.updateProjectionMatrix()
