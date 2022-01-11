@@ -24,6 +24,7 @@ export default class Sketch {
 
 		this.camera = new THREE.PerspectiveCamera(75, W / H, 0.1, 100)
 		this.camera.position.set(1, 1, 1)
+		this.camera.lookAt(new THREE.Vector3(0, 0, 0))
 		this.scene.add(this.camera)
 
 		this.controls = new OrbitControls(this.camera, this.canvas)
